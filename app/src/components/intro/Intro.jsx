@@ -4,15 +4,33 @@ import { useEffect, useRef } from "react";
 
 export default function Intro() {
   const textRef = useRef();
+  
+  function timeout(ms){
+    return new Promise((resolve)=> setTimeout(resolve, ms));
+  }
 
-  useEffect(() => {
-    init(textRef.current, {
-      showCursor: true,
-      backDelay: 1500,
-      backSpeed: 60,
-      strings: ["Developer", "Programmer"],
-    });
-  }, []);
+  useEffect(()=>{
+
+    let isCancelled = false;
+    
+    const handleChange = async () => {
+      await timeout(1000);
+      if(!isCancelled){
+          init(textRef.current, {
+          showCursor: true,
+          backDelay: 1500,
+          backSpeed: 60,
+          strings: ["Developer", "Programmer", "Software Engineer"],
+        });
+      }
+
+    }
+    handleChange();
+
+    return()=>{
+        isCancelled = true;
+    };
+  },[])
 
   return (
     <div className='intro' id="intro">
