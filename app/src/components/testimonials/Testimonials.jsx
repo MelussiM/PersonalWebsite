@@ -1,28 +1,63 @@
 import "./testimonials.scss"
 
 export default function Testimonials() {
+  const data = [
+    {
+      id: 1,
+      name: "Tom Durden",
+      title: "Senior Developer",
+      img:
+        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      icon: "assets/twitter.png",
+      desc:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem.",
+    },
+    {
+      id: 2,
+      name: "Alex Kalinski",
+      title: "Co-Founder of DELKA",
+      img:
+        "https://images.pexels.com/photos/428321/pexels-photo-428321.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      icon: "assets/youtube.png",
+      desc:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem recusandae perspiciatis ducimus vel hic temporibus. ",
+      featured: true,
+    },
+    {
+      id: 3,
+      name: "Martin Harold",
+      title: "CEO of ALBI",
+      img:
+        "https://images.pexels.com/photos/3863793/pexels-photo-3863793.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      icon: "assets/linkedin.png",
+      desc:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat magnam dolorem",
+    },
+  ];
   return (
     <div className="testimonials" id="testimonials">
         <h1>Testimonials</h1>
         <div className="container">
-          <div className="card">
+          {data.map((d)=> (
+          <div className={d.featured ? "card featured" : "card"}>
             <div className="top">
                 <img src="assets/arrow-right.png" className="left" alt="" />
-                <img className="user" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+                <img className="user" src={d.img} alt="" />
                 <img className="right" src="assets/youtube.png" alt="" />
             </div>
               <div className="center">
-                  [Random text insert here] akjhsauygiabhsd jhasbuiasbjkjbiub kusabidbas jbyasb
-              </div>
+                  {d.desc}
+                  </div>
               <div className="bottom">
                   <h3>
-                    Melusi
+                    {d.name}
                   </h3>
-                  <h3>
-                    Owner of [company name]
-                  </h3>
+                  <h4>
+                    {d.title}
+                  </h4>
               </div>
             </div>
+            ))}
           </div>
     </div>
   )
