@@ -43,7 +43,7 @@ export default function Testimonials() {
             <div className="top">
                 <img src="assets/arrow-right.png" className="left" alt="" />
                 <img className="user" src={d.img} alt="" />
-                <img className="right" src="assets/youtube.png" alt="" />
+                <img className="right" src={d.icon} alt="" />
             </div>
               <div className="center">
                   {d.desc}
